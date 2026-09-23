@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>devank.dev | Under Construction</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Load Phosphor Icons for elegant social icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b; /* Zinc 950 */
+            color: #f4f4f5; /* Zinc 100 */
+        }
+        
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Subtle tech-inspired grid background */
+        .bg-grid {
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+        }
+
+        /* Blinking cursor animation */
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Subtle fade-in animation for elements */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center relative overflow-hidden selection:bg-zinc-800 selection:text-white">
+
+    <!-- Grid Background overlay -->
+    <div class="absolute inset-0 bg-grid z-0 pointer-events-none"></div>
+
+    <!-- Ambient glow effect -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-800/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+    <!-- Main Content -->
+    <main class="relative z-10 text-center px-6 max-w-2xl w-full">
+        
+        <!-- Logo / Name -->
+        <div class="mb-8 fade-in-up">
+            <h1 class="text-2xl md:text-3xl font-semibold tracking-tight text-zinc-300">
+                Devank Nassa
+            </h1>
+            <div class="mt-2 text-sm md:text-base font-mono text-zinc-500">
+                <span>devank.dev</span><span class="cursor-blink inline-block ml-1 w-2 h-4 bg-zinc-500 translate-y-1"></span>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="w-12 h-px bg-zinc-800 mx-auto mb-10 fade-in-up delay-100"></div>
+
+        <!-- Status Message -->
+        <div class="mb-12 fade-in-up delay-200">
+            <h2 class="text-4xl md:text-5xl font-light tracking-tight text-white mb-4">
+                Under Construction
+            </h2>
+            <p class="text-zinc-400 text-lg md:text-xl font-light max-w-md mx-auto leading-relaxed">
+                I'm currently crafting a new experience. <br class="hidden md:block"/>
+                Check back soon to see what's coming.
+            </p>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex items-center justify-center gap-6 fade-in-up delay-300">
+            <!-- X (Twitter) -->
+            <!-- <a href="#" class="text-zinc-500 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="X (Twitter)">
+                <i class="ph ph-x-logo text-2xl"></i>
+            </a> -->
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/devank-nassa" class="text-zinc-500 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="LinkedIn">
+                <i class="ph ph-linkedin-logo text-2xl"></i>
+            </a>
+            <!-- GitHub -->
+            <a href="https://github.com/DevankNassa" class="text-zinc-500 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="GitHub">
+                <i class="ph ph-github-logo text-2xl"></i>
+            </a>
+            <!-- Email -->
+            <a href="mailto:devanknassa@gmail.com" class="text-zinc-500 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="Email">
+                <i class="ph ph-envelope-simple text-2xl"></i>
+            </a>
+        </div>
+        
+    </main>
+
+</body>
+</html>
