@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>devank.dev | Public draft</title>
+    <meta name="description" content="A public draft of Devank Nassa's portfolio while the main site is under construction.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b;
+            color: #f4f4f5;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .bg-grid {
+            background-size: 48px 48px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.7s ease-out forwards;
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        .delay-100 { animation-delay: 80ms; }
+        .delay-200 { animation-delay: 160ms; }
+        .delay-300 { animation-delay: 240ms; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .work-card.is-hidden {
+            display: none;
+        }
+
+        .filter-btn[aria-pressed="true"] {
+            color: #fafafa;
+            background-color: #27272a;
+            border-color: #3f3f46;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative selection:bg-zinc-800 selection:text-white">
+    <div class="absolute inset-0 bg-grid z-0 pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[420px] bg-zinc-800/25 rounded-full blur-[140px] pointer-events-none z-0"></div>
+
+    <header class="relative z-10 border-b border-zinc-800/80">
+        <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between gap-4">
+            <a href="index.html" class="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+                <i class="ph ph-arrow-left"></i>
+                <span>Back to notice</span>
+            </a>
+            <p class="font-mono text-xs text-zinc-500 tracking-wide">devank.dev / draft</p>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-5xl mx-auto px-6 pt-16 pb-24">
+        <section class="mb-16 fade-in-up">
+            <p class="font-mono text-xs uppercase tracking-[0.22em] text-zinc-500 mb-5">Public draft · 02</p>
+            <h1 class="text-4xl md:text-6xl font-light tracking-tight text-white max-w-3xl leading-[1.05]">
+                A look at the work while the rest of the site is still being built.
+            </h1>
+            <p class="mt-6 text-lg text-zinc-400 font-light max-w-xl leading-relaxed">
+                The home page is a construction notice. This page is the sketch behind it: public projects, and what is still missing.
+            </p>
+        </section>
+
+        <section class="grid md:grid-cols-3 gap-px bg-zinc-800 border border-zinc-800 rounded-2xl overflow-hidden mb-16 fade-in-up delay-100" aria-label="Site status">
+            <div class="bg-zinc-950 p-6">
+                <p class="font-mono text-xs text-zinc-500 mb-3">01</p>
+                <p class="text-white font-medium mb-1">Notice</p>
+                <p class="text-sm text-zinc-400">Live. The front door still says under construction.</p>
+            </div>
+            <div class="bg-zinc-950 p-6">
+                <p class="font-mono text-xs text-zinc-500 mb-3">02</p>
+                <p class="text-white font-medium mb-1">This draft</p>
+                <p class="text-sm text-zinc-400">Live. A short list of repositories already public.</p>
+            </div>
+            <div class="bg-zinc-950 p-6">
+                <p class="font-mono text-xs text-zinc-500 mb-3">03</p>
+                <p class="text-white font-medium mb-1">Case studies</p>
+                <p class="text-sm text-zinc-400">Not written yet. Longer write-ups come after this sketch.</p>
+            </div>
+        </section>
+
+        <section aria-labelledby="work-heading">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-8 fade-in-up delay-200">
+                <div>
+                    <h2 id="work-heading" class="text-2xl font-light text-white">Public work</h2>
+                    <p class="mt-2 text-sm text-zinc-500">Pulled from GitHub. Descriptions stay close to the repos themselves.</p>
+                </div>
+                <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by language">
+                    <button type="button" class="filter-btn font-mono text-xs px-3 py-1.5 rounded-full border border-zinc-800 text-zinc-400 hover:text-white transition-colors" data-filter="all" aria-pressed="true">All</button>
+                    <button type="button" class="filter-btn font-mono text-xs px-3 py-1.5 rounded-full border border-zinc-800 text-zinc-400 hover:text-white transition-colors" data-filter="go" aria-pressed="false">Go</button>
+                    <button type="button" class="filter-btn font-mono text-xs px-3 py-1.5 rounded-full border border-zinc-800 text-zinc-400 hover:text-white transition-colors" data-filter="javascript" aria-pressed="false">JavaScript</button>
+                    <button type="button" class="filter-btn font-mono text-xs px-3 py-1.5 rounded-full border border-zinc-800 text-zinc-400 hover:text-white transition-colors" data-filter="html" aria-pressed="false">HTML</button>
+                </div>
+            </div>
+
+            <ul id="work-list" class="space-y-3">
+                <li class="work-card" data-lang="javascript">
+                    <a href="https://github.com/DevankNassa/mf-backend" class="group block border border-zinc-800 rounded-2xl p-6 hover:border-zinc-600 hover:bg-zinc-900/40 transition-colors">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <p class="font-mono text-xs text-zinc-500 mb-2">JavaScript</p>
+                                <h3 class="text-xl text-white font-medium group-hover:text-zinc-100">mf-backend</h3>
+                                <p class="mt-2 text-zinc-400 leading-relaxed max-w-2xl">Mutual fund NAV backend. Node.js, Fastify, Prisma, Redis, and BullMQ, with a worker that processes queued jobs.</p>
+                            </div>
+                            <i class="ph ph-arrow-up-right text-zinc-600 group-hover:text-white transition-colors text-xl mt-1"></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="work-card" data-lang="html">
+                    <a href="https://github.com/DevankNassa/HoodEvo" class="group block border border-zinc-800 rounded-2xl p-6 hover:border-zinc-600 hover:bg-zinc-900/40 transition-colors">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <p class="font-mono text-xs text-zinc-500 mb-2">HTML</p>
+                                <h3 class="text-xl text-white font-medium">HoodEvo</h3>
+                                <p class="mt-2 text-zinc-400 leading-relaxed max-w-2xl">A small site for switching the style of a hoodie with velcro embroidered patches.</p>
+                            </div>
+                            <i class="ph ph-arrow-up-right text-zinc-600 group-hover:text-white transition-colors text-xl mt-1"></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="work-card" data-lang="go">
+                    <a href="https://github.com/DevankNassa/ChirpyGo" class="group block border border-zinc-800 rounded-2xl p-6 hover:border-zinc-600 hover:bg-zinc-900/40 transition-colors">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <p class="font-mono text-xs text-zinc-500 mb-2">Go</p>
+                                <h3 class="text-xl text-white font-medium">ChirpyGo</h3>
+                                <p class="mt-2 text-zinc-400 leading-relaxed max-w-2xl">A Go server written as practice from the boot.dev course.</p>
+                            </div>
+                            <i class="ph ph-arrow-up-right text-zinc-600 group-hover:text-white transition-colors text-xl mt-1"></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="work-card" data-lang="go">
+                    <a href="https://github.com/DevankNassa/gopoke" class="group block border border-zinc-800 rounded-2xl p-6 hover:border-zinc-600 hover:bg-zinc-900/40 transition-colors">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <p class="font-mono text-xs text-zinc-500 mb-2">Go</p>
+                                <h3 class="text-xl text-white font-medium">gopoke</h3>
+                                <p class="mt-2 text-zinc-400 leading-relaxed max-w-2xl">A Go project on GitHub. The repository does not have a description yet.</p>
+                            </div>
+                            <i class="ph ph-arrow-up-right text-zinc-600 group-hover:text-white transition-colors text-xl mt-1"></i>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <p id="empty-filter" class="hidden mt-6 text-sm text-zinc-500">Nothing in this language on the draft yet.</p>
+        </section>
+
+        <section class="mt-20 border-t border-zinc-800 pt-10 fade-in-up delay-300">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-[0.22em] text-zinc-500 mb-3">Devank Nassa</p>
+                    <h2 class="text-3xl font-light text-white">Say hello while the rest is unfinished.</h2>
+                </div>
+                <div class="flex items-center gap-5">
+                    <a href="https://www.linkedin.com/in/devank-nassa" class="text-zinc-500 hover:text-white transition-colors" aria-label="LinkedIn">
+                        <i class="ph ph-linkedin-logo text-2xl"></i>
+                    </a>
+                    <a href="https://github.com/DevankNassa" class="text-zinc-500 hover:text-white transition-colors" aria-label="GitHub">
+                        <i class="ph ph-github-logo text-2xl"></i>
+                    </a>
+                    <a href="mailto:devanknassa@gmail.com" class="text-zinc-500 hover:text-white transition-colors" aria-label="Email">
+                        <i class="ph ph-envelope-simple text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const buttons = document.querySelectorAll(".filter-btn");
+        const cards = document.querySelectorAll(".work-card");
+        const empty = document.getElementById("empty-filter");
+
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const filter = button.dataset.filter;
+                buttons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+
+                let visible = 0;
+                cards.forEach((card) => {
+                    const show = filter === "all" || card.dataset.lang === filter;
+                    card.classList.toggle("is-hidden", !show);
+                    if (show) visible += 1;
+                });
+
+                empty.classList.toggle("hidden", visible > 0);
+            });
+        });
+    </script>
+</body>
+</html>
