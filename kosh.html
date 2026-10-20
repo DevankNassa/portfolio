@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>devank.dev | Kosh demo</title>
+    <meta name="description" content="A live demo of Kosh, a portfolio review app for an independent mutual fund distributor.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b;
+            color: #f4f4f5;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .bg-grid {
+            background-size: 48px 48px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.7s ease-out forwards;
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        .delay-100 { animation-delay: 80ms; }
+        .delay-200 { animation-delay: 160ms; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen relative selection:bg-zinc-800 selection:text-white">
+    <div class="absolute inset-0 bg-grid z-0 pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[420px] bg-zinc-800/25 rounded-full blur-[140px] pointer-events-none z-0"></div>
+
+    <header class="relative z-10 border-b border-zinc-800/80">
+        <div class="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between gap-4">
+            <a href="index.html" class="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+                <i class="ph ph-arrow-left"></i>
+                <span>Back to devank.dev</span>
+            </a>
+            <p class="font-mono text-xs text-zinc-500 tracking-wide">devank.dev / kosh</p>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-3xl mx-auto px-6 pt-16 pb-24">
+        <section class="fade-in-up">
+            <p class="font-mono text-xs uppercase tracking-[0.22em] text-zinc-500 mb-5">Project demo</p>
+            <h1 class="text-4xl md:text-5xl font-light tracking-tight text-white leading-[1.1]">
+                Kosh
+            </h1>
+            <p class="mt-6 text-lg text-zinc-400 font-light leading-relaxed">
+                A portfolio review app I built for an independent mutual fund distributor:
+                each client's holdings in one place, what market moves and news do to them,
+                and the tax effect of a change before it's made.
+            </p>
+        </section>
+
+        <section class="mt-10 border border-zinc-800 rounded-2xl p-6 md:p-8 fade-in-up delay-100">
+            <p class="text-sm text-zinc-500 mb-6">
+                Running live for a client to try out. It's a demo build with sample
+                portfolios &mdash; no real client data. Login details were sent to you
+                separately; this link is protected and won't open without them.
+            </p>
+
+            <a href="https://sage-defensive-promoted-commissions.trycloudflare.com" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 text-sm font-medium bg-white text-zinc-950 rounded-full px-5 py-2.5 hover:bg-zinc-200 transition-colors">
+                Open the demo
+                <i class="ph ph-arrow-up-right"></i>
+            </a>
+        </section>
+
+        <section class="mt-16 fade-in-up delay-200">
+            <h2 class="text-sm font-mono uppercase tracking-[0.22em] text-zinc-500 mb-4">Code</h2>
+            <a href="https://github.com/DevankNassa/kosh" class="group inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
+                <i class="ph ph-github-logo text-xl"></i>
+                <span>DevankNassa/kosh</span>
+                <i class="ph ph-arrow-up-right text-zinc-600 group-hover:text-white transition-colors"></i>
+            </a>
+        </section>
+    </main>
+</body>
+</html>
