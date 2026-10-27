@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>devank.dev | Instant Playlist privacy policy</title>
+    <meta name="description" content="Privacy policy for Instant Playlist, a music player for audio files already on your device.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b;
+            color: #f4f4f5;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .bg-grid {
+            background-size: 48px 48px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+        }
+
+        .policy h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: #71717a;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy p,
+        .policy li {
+            color: #a1a1aa;
+            font-weight: 300;
+            line-height: 1.75;
+        }
+
+        .policy ul {
+            list-style: disc;
+            padding-left: 1.25rem;
+        }
+
+        .policy li + li {
+            margin-top: 0.75rem;
+        }
+
+        .policy strong {
+            color: #f4f4f5;
+            font-weight: 500;
+        }
+
+        .policy a {
+            color: #f4f4f5;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative selection:bg-zinc-800 selection:text-white">
+    <div class="absolute inset-0 bg-grid z-0 pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[420px] bg-zinc-800/25 rounded-full blur-[140px] pointer-events-none z-0"></div>
+
+    <header class="relative z-10 border-b border-zinc-800/80">
+        <div class="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between gap-4">
+            <a href="../index.html" class="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+                <i class="ph ph-arrow-left"></i>
+                <span>Back to devank.dev</span>
+            </a>
+            <p class="font-mono text-xs text-zinc-500 tracking-wide">devank.dev / instant-playlist / privacy</p>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-3xl mx-auto px-6 pt-16 pb-24">
+        <section>
+            <p class="font-mono text-xs uppercase tracking-[0.22em] text-zinc-500 mb-5">Instant Playlist</p>
+            <h1 class="text-4xl md:text-5xl font-light tracking-tight text-white leading-[1.1]">
+                Privacy Policy
+            </h1>
+            <p class="mt-6 text-sm font-mono text-zinc-500">Last updated: 28 October 2026</p>
+        </section>
+
+        <section class="policy mt-10">
+            <p>
+                Instant Playlist ("the app") is a music player for audio files you already
+                have on your device. This policy explains what the app does with your data.
+            </p>
+
+            <h2>Data we collect</h2>
+            <p>
+                <strong>None.</strong> The app does not collect, store, transmit, or share any
+                personal data or usage data. It has no accounts, no analytics, no advertising,
+                and no tracking, and it does not connect to any server.
+            </p>
+
+            <h2>Data on your device</h2>
+            <ul>
+                <li>
+                    <strong>Your music files.</strong> The app reads the audio files in the
+                    folders you choose so it can play them and show their titles and artists.
+                    When you tag a song, the tag is written into that song file's own metadata
+                    (its "genre" field). Your files never leave your device.
+                </li>
+                <li>
+                    <strong>Chosen folders.</strong> The app remembers which folders you picked
+                    so your library is still there the next time you open it. This is stored
+                    only on your device and is removed when you uninstall the app.
+                </li>
+            </ul>
+
+            <h2>Permissions</h2>
+            <ul>
+                <li>
+                    <strong>Music and audio (Android) / chosen folders (iOS):</strong> to find
+                    and play your songs and to save tags into them.
+                </li>
+                <li>
+                    <strong>Notifications and background playback:</strong> to keep playing
+                    music and show playback controls when the app isn't on screen.
+                </li>
+            </ul>
+
+            <h2>Children</h2>
+            <p>The app does not collect data from anyone, including children.</p>
+
+            <h2>Changes</h2>
+            <p>
+                If this policy changes, the updated version will be posted on this page with a
+                new "Last updated" date.
+            </p>
+
+            <h2>Contact</h2>
+            <p>
+                Questions about this policy: email
+                <a href="mailto:devanknassa@gmail.com">devanknassa@gmail.com</a>, or open an issue at
+                <a href="https://github.com/DevankNassa/music_player/issues">github.com/DevankNassa/music_player/issues</a>.
+            </p>
+        </section>
+    </main>
+</body>
+</html>
