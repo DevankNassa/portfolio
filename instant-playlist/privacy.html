@@ -15,8 +15,8 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #09090b;
-            color: #f4f4f5;
+            background-color: #ffffff;
+            color: #18181b;
         }
 
         .font-mono {
@@ -26,8 +26,8 @@
         .bg-grid {
             background-size: 48px 48px;
             background-image:
-                linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+                linear-gradient(to right, rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
             mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
             -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
         }
@@ -37,15 +37,15 @@
             font-size: 0.875rem;
             text-transform: uppercase;
             letter-spacing: 0.22em;
-            color: #71717a;
+            color: #52525b;
             margin-top: 3rem;
             margin-bottom: 1rem;
         }
 
         .policy p,
         .policy li {
-            color: #a1a1aa;
-            font-weight: 300;
+            color: #3f3f46;
+            font-weight: 400;
             line-height: 1.75;
         }
 
@@ -59,38 +59,37 @@
         }
 
         .policy strong {
-            color: #f4f4f5;
+            color: #18181b;
             font-weight: 500;
         }
 
         .policy a {
-            color: #f4f4f5;
+            color: #18181b;
             text-decoration: underline;
             text-underline-offset: 3px;
         }
     </style>
 </head>
-<body class="min-h-screen relative selection:bg-zinc-800 selection:text-white">
+<body class="min-h-screen relative selection:bg-zinc-200 selection:text-zinc-900">
     <div class="absolute inset-0 bg-grid z-0 pointer-events-none"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[420px] bg-zinc-800/25 rounded-full blur-[140px] pointer-events-none z-0"></div>
 
-    <header class="relative z-10 border-b border-zinc-800/80">
+    <header class="relative z-10 border-b border-zinc-200">
         <div class="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between gap-4">
-            <a href="../index.html" class="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+            <a href="../index.html" class="inline-flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 transition-colors">
                 <i class="ph ph-arrow-left"></i>
                 <span>Back to devank.dev</span>
             </a>
-            <p class="font-mono text-xs text-zinc-500 tracking-wide">devank.dev / instant-playlist / privacy</p>
+            <p class="font-mono text-xs text-zinc-600 tracking-wide">devank.dev / instant-playlist / privacy</p>
         </div>
     </header>
 
     <main class="relative z-10 max-w-3xl mx-auto px-6 pt-16 pb-24">
         <section>
-            <p class="font-mono text-xs uppercase tracking-[0.22em] text-zinc-500 mb-5">Instant Playlist</p>
-            <h1 class="text-4xl md:text-5xl font-light tracking-tight text-white leading-[1.1]">
+            <p class="font-mono text-xs uppercase tracking-[0.22em] text-zinc-600 mb-5">Instant Playlist</p>
+            <h1 class="text-4xl md:text-5xl font-light tracking-tight text-zinc-900 leading-[1.1]">
                 Privacy Policy
             </h1>
-            <p class="mt-6 text-sm font-mono text-zinc-500">Last updated: 28 October 2026</p>
+            <p class="mt-6 text-sm font-mono text-zinc-600">Last updated: 28 October 2026</p>
         </section>
 
         <section class="policy mt-10">
