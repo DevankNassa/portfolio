@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>devank.dev | Instant Playlist support</title>
+    <meta name="description" content="Help and contact for Instant Playlist, a music player that builds playlists from tags on your own songs.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #18181b;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .bg-grid {
+            background-size: 48px 48px;
+            background-image:
+                linear-gradient(to right, rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+        }
+
+        .policy h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: #52525b;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy p,
+        .policy li {
+            color: #3f3f46;
+            font-weight: 400;
+            line-height: 1.75;
+        }
+
+        .policy ul {
+            list-style: disc;
+            padding-left: 1.25rem;
+        }
+
+        .policy li + li {
+            margin-top: 0.75rem;
+        }
+
+        .policy strong {
+            color: #18181b;
+            font-weight: 500;
+        }
+
+        .policy a {
+            color: #18181b;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative selection:bg-zinc-200 selection:text-zinc-900">
+    <div class="absolute inset-0 bg-grid z-0 pointer-events-none"></div>
+
+    <header class="relative z-10 border-b border-zinc-200">
+        <div class="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between gap-4">
+            <a href="../index.html" class="inline-flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 transition-colors">
+                <i class="ph ph-arrow-left"></i>
+                <span>Back to devank.dev</span>
+            </a>
+            <p class="font-mono text-xs text-zinc-600 tracking-wide">devank.dev / instant-playlist</p>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-3xl mx-auto px-6 pt-16 pb-24">
+        <section>
+            <p class="font-mono text-xs uppercase tracking-[0.22em] text-zinc-600 mb-5">Support</p>
+            <h1 class="text-4xl md:text-5xl font-light tracking-tight text-zinc-900 leading-[1.1]">
+                Instant Playlist
+            </h1>
+            <p class="mt-6 text-lg text-zinc-700 leading-relaxed">
+                A music player for the songs you already own. Tag your songs, then build a
+                playlist from whichever tags you choose.
+            </p>
+        </section>
+
+        <section class="policy mt-10">
+            <h2>Contact</h2>
+            <p>
+                Questions, problems or ideas: email
+                <a href="mailto:devanknassa@gmail.com">devanknassa@gmail.com</a>.
+                Please include your iPhone model and iOS version if something isn't working.
+            </p>
+
+            <h2>Adding your music</h2>
+            <ul>
+                <li>
+                    <strong>From the Files app.</strong> Open Files, go to
+                    <em>On My iPhone</em> &rarr; <em>Instant Playlist</em>, and copy some
+                    audio files in. Then in the app, tap <strong>+ Add</strong> and choose that folder.
+                </li>
+                <li>
+                    <strong>From a synced folder.</strong> If you keep your music in a folder
+                    that's synced from your computer, tap <strong>+ Add</strong> and choose that
+                    folder. Tags you add are written back to the files, so they sync too.
+                </li>
+                <li>
+                    <strong>Supported formats:</strong> MP3, FLAC, M4A, AAC, WAV, OGG and Opus.
+                </li>
+            </ul>
+
+            <h2>Common questions</h2>
+            <ul>
+                <li>
+                    <strong>Where are my tags saved?</strong> Inside each song file, in its
+                    "genre" field, with tags separated by semicolons. They stay with the file
+                    if you move it, and other music apps will show them as the song's genre.
+                </li>
+                <li>
+                    <strong>Why do my songs already have tags?</strong> Any genre a song already
+                    had shows up as a tag. You can keep it or remove it like any other tag.
+                </li>
+                <li>
+                    <strong>How do the faders work?</strong> Put a tag on a fader and set it to
+                    <strong>Only</strong> (only songs with that tag), <strong>Any</strong>
+                    (songs with at least one of the tags set to Any) or <strong>No</strong>
+                    (leave those songs out). All faders apply together. Tap
+                    <strong>Reset</strong> to clear them.
+                </li>
+                <li>
+                    <strong>My songs disappeared.</strong> If the folder was moved, renamed or
+                    is no longer available, add it again with <strong>+ Add</strong>. Your
+                    tags are safe, since they're stored in the files themselves.
+                </li>
+            </ul>
+
+            <h2>Privacy</h2>
+            <p>
+                The app collects no data and never connects to the internet. Read the
+                <a href="privacy.html">privacy policy</a>.
+            </p>
+        </section>
+    </main>
+</body>
+</html>
