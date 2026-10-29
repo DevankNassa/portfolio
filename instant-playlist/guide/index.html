@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instant Playlist: User Guide</title>
+<style>
+  @font-face { font-family: Caprasimo; src: url(fonts/Caprasimo-Regular.ttf); }
+  @font-face { font-family: Figtree; src: url(fonts/Figtree-Regular.ttf); font-weight: 400; }
+  @font-face { font-family: Figtree; src: url(fonts/Figtree-SemiBold.ttf); font-weight: 600; }
+  @font-face { font-family: Figtree; src: url(fonts/Figtree-Bold.ttf); font-weight: 700; }
+
+  :root {
+    --bg: #F5EAD8; --surface: #EBDDC5; --text: #201E1D; --muted: #645C50;
+    --accent: #C67139; --accent-dark: #8C491A; --accent-light: #FFF2EB;
+    --green: #728157; --green-light: #E1EECC; --grey: #A19786;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 17px/1.6 Figtree, system-ui, sans-serif;
+  }
+  main { max-width: 880px; margin: 0 auto; padding: 56px 28px 80px; }
+  h1, h2, h3 { font-family: Caprasimo, Georgia, serif; font-weight: 400; letter-spacing: -0.015em; line-height: 1.12; }
+  h1 { font-size: 56px; margin: 18px 0 8px; }
+  h2 { font-size: 36px; margin: 0 0 14px; }
+  h3 { font-size: 22px; margin: 26px 0 8px; }
+  p { margin: 0 0 12px; }
+  a { color: var(--accent-dark); }
+  .lead { font-size: 21px; color: var(--muted); max-width: 640px; }
+  .icon { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 12px 30px rgba(100,51,18,.25); }
+
+  .card { background: var(--surface); border-radius: 30px; padding: 26px 30px; margin: 22px 0; }
+  .video { margin: 30px 0 10px; display: flex; gap: 26px; align-items: center; }
+  .video video { width: 230px; border-radius: 22px; box-shadow: 0 16px 40px rgba(46,43,37,.25); background: #000; }
+
+  section { padding: 44px 0 10px; border-top: 1px solid rgba(32,30,29,.14); margin-top: 40px; }
+  .split { display: grid; grid-template-columns: 1fr 250px; gap: 36px; align-items: start; }
+  .split.two { grid-template-columns: 1fr 210px 210px; gap: 22px; }
+  .shot { width: 100%; filter: drop-shadow(0 14px 26px rgba(46,43,37,.22)); }
+  figcaption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 6px; }
+  figure { margin: 0; }
+
+  ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 10px 0 16px; }
+  ol.steps > li { counter-increment: s; position: relative; padding-left: 46px; margin: 12px 0; }
+  ol.steps > li::before {
+    content: counter(s); position: absolute; left: 0; top: -1px;
+    width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: var(--bg);
+    font: 16px/32px Caprasimo, serif; text-align: center;
+  }
+  ul { padding-left: 22px; margin: 8px 0 14px; }
+  li { margin: 6px 0; }
+
+  .pill { display: inline-block; padding: 1px 11px; border-radius: 999px; font-weight: 600; font-size: 14px; line-height: 1.6; white-space: nowrap; }
+  .only { background: var(--green); color: #F9F4ED; }
+  .any { background: var(--grey); color: #F9F4ED; }
+  .no { background: var(--accent); color: #F9F4ED; }
+  .btn { background: var(--accent); color: var(--bg); font-family: Caprasimo, serif; font-weight: 400; }
+  .tab { font-family: Caprasimo, serif; color: var(--accent-dark); }
+  .tip { background: var(--green-light); border-radius: 22px; padding: 14px 20px; margin: 16px 0; }
+  .tip b { color: #3D472B; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 16px; }
+  th, td { text-align: left; padding: 10px 12px; vertical-align: top; }
+  th { font-family: Caprasimo, serif; font-weight: 400; font-size: 17px; }
+  tr + tr td { border-top: 1px solid rgba(32,30,29,.14); }
+  .toc { columns: 2; padding-left: 20px; margin: 6px 0 0; }
+  .toc li { margin: 4px 0; }
+  .qa h3 { font-size: 19px; margin-top: 20px; }
+  footer { margin-top: 60px; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 42px; }
+    .split, .split.two { grid-template-columns: 1fr; }
+    .shot { max-width: 260px; display: block; margin: 0 auto; }
+    .video { flex-direction: column; align-items: flex-start; }
+    .toc { columns: 1; }
+  }
+  @media print {
+    @page { size: A4; margin: 14mm 14mm 16mm; }
+    body { font-size: 12.5pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    main { padding: 0; max-width: none; }
+    section { break-before: page; border-top: 0; margin-top: 0; padding-top: 0; }
+    .video video { display: none; }
+    .video-print { display: block !important; }
+    .split { grid-template-columns: 1fr 210px; }
+    .split.two { grid-template-columns: 1fr 175px 175px; }
+    .card, .tip, figure, tr, ol.steps > li { break-inside: avoid; }
+    h2, h3 { break-after: avoid; }
+  }
+  .video-print { display: none; }
+  @media print { .video-hide { display: none; } }
+</style>
+</head>
+<body>
+<main>
+
+<img class="icon" src="img/app_icon.svg" alt="Instant Playlist icon">
+<h1>Instant Playlist</h1>
+<p class="lead">User guide. Instant Playlist plays the music you already own and builds playlists from tags you choose: moods, places, people, anything.</p>
+<p class="video-hide"><a href="instant-playlist-guide.pdf">Download this guide as a PDF</a></p>
+
+<div class="video">
+  <video src="instant-playlist-demo.mp4" poster="img/video-poster.jpg" controls playsinline preload="metadata"></video>
+  <div>
+    <h3 style="margin-top:0">Start with the 34-second demo</h3>
+    <p>The video shows the whole idea: tag a song while it plays, then mix tags into a playlist. This guide covers every step in detail.</p>
+    <p class="video-print"><b>Watch it at</b> devank.dev/instant-playlist/guide/</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">The app in one minute</h3>
+  <p>There are four tabs at the bottom of the screen:</p>
+  <table>
+    <tr><td class="tab">Library</td><td>All your songs. Add your music folder here.</td></tr>
+    <tr><td class="tab">Player</td><td>The song that's playing, with its tags.</td></tr>
+    <tr><td class="tab">Tag</td><td>The fastest way to tag: tap tags while the music plays.</td></tr>
+    <tr><td class="tab">Mix</td><td>Pick tags on six faders and play only the songs that match.</td></tr>
+  </table>
+  <p style="margin:0">Contents:</p>
+  <ol class="toc">
+    <li><a href="#start">Quick start</a></li>
+    <li><a href="#music">Adding your music</a></li>
+    <li><a href="#library">Library</a></li>
+    <li><a href="#tag">Tagging while you listen</a></li>
+    <li><a href="#player">The Player tab</a></li>
+    <li><a href="#mix">Making a playlist with Mix</a></li>
+    <li><a href="#playback">Playback controls</a></li>
+    <li><a href="#tags">Where your tags are saved</a></li>
+    <li><a href="#faq">Questions and fixes</a></li>
+  </ol>
+</div>
+
+<section id="start">
+  <h2>Quick start</h2>
+  <p>Five steps from a fresh install to your first playlist:</p>
+  <ol class="steps">
+    <li><b>Put some music on your phone.</b> On iPhone, open the <b>Files</b> app, go to <b>On My iPhone → Instant Playlist</b>, and copy in a few songs (or a whole folder). Or use any folder that's synced from your computer.</li>
+    <li><b>Add the folder.</b> In <span class="tab">Library</span>, tap <span class="pill btn">+ Add</span> and choose that folder. Your songs appear in the list.</li>
+    <li><b>Tag as you listen.</b> Open <span class="tab">Tag</span> and tap <span class="pill btn">Start tagging session</span>. While each song plays, tap the tags that fit it. Use <b>+ New tag</b> to make your first tags, like <i>chill</i>, <i>workout</i> or <i>road trip</i>.</li>
+    <li><b>Mix.</b> Open <span class="tab">Mix</span>, tap a tag under the faders to put it on one, and slide each fader to <span class="pill only">ONLY</span>, <span class="pill any">ANY</span> or <span class="pill no">NO</span>.</li>
+    <li><b>Play.</b> Tap <span class="pill btn">Play all</span>. That's your instant playlist.</li>
+  </ol>
+  <div class="tip"><b>Tip:</b> you don't need to tag everything at once. Tag a few songs every time you listen and your mixes get better over time.</div>
+</section>
+
+<section id="music">
+  <h2>Adding your music</h2>
+  <p>Instant Playlist plays music files that are on your device. It doesn't stream, and it doesn't need an account or the internet.</p>
+
+  <h3>On iPhone</h3>
+  <ol class="steps">
+    <li><b>Copy music into a folder.</b> Either:
+      <ul>
+        <li><b>The Files app:</b> open Files → <b>On My iPhone</b> → <b>Instant Playlist</b> and copy audio files or folders in (from iCloud Drive, AirDrop, a USB drive or your computer).</li>
+        <li><b>A synced folder:</b> if you sync music from your computer with an app such as Syncthing, use that folder. Tags you add are written into the files, so they sync back to your computer too.</li>
+      </ul>
+    </li>
+    <li>In <span class="tab">Library</span>, tap <span class="pill btn">+ Add</span> and choose the folder.</li>
+  </ol>
+  <p>Instant Playlist finds every song inside that folder, including songs in folders inside it.</p>
+
+  <h3>On a computer</h3>
+  <p><span class="pill btn">+ Add</span> offers two choices: <b>Add a folder</b> (new files added to it later are picked up automatically) or <b>Add individual songs</b>.</p>
+
+  <h3>Good to know</h3>
+  <ul>
+    <li><b>Formats:</b> MP3, FLAC, M4A, AAC, WAV, OGG and Opus.</li>
+    <li><b>Your folders are remembered.</b> The library comes back each time you open the app.</li>
+    <li><b>New or deleted songs</b> in your folders are noticed when you come back to the app.</li>
+    <li><b>Names:</b> songs show the title and artist stored in the file. A song with no title shows its file name.</li>
+  </ul>
+</section>
+
+<section id="library">
+  <h2>Library</h2>
+  <div class="split">
+    <div>
+      <p>The <span class="tab">Library</span> tab lists every song, numbered, with its artist and tags underneath.</p>
+      <ul>
+        <li><b>Tap a song</b> to play it. The rest of the library plays after it, in order.</li>
+        <li><b>Tap the playing song</b> (highlighted) to pause or resume.</li>
+        <li><b>+ Add</b> adds another folder.</li>
+      </ul>
+      <p>While something plays, a dark <b>mini player</b> floats above the tabs on Library and Mix. Use it to pause or skip without leaving the screen you're on.</p>
+    </div>
+    <figure><img class="shot" src="img/library.png" alt="Library tab"><figcaption>Library, with the mini player</figcaption></figure>
+  </div>
+</section>
+
+<section id="tag">
+  <h2>Tagging while you listen</h2>
+  <div class="split">
+    <div>
+      <p>The <span class="tab">Tag</span> tab is built for tagging a whole library without stopping the music. The playing song is at the top, and below it is the <b>Tag pad</b>: a big button for every tag you've made.</p>
+      <ol class="steps">
+        <li>If nothing is playing, tap <span class="pill btn">Start tagging session</span>. Your library starts playing from the first song.</li>
+        <li><b>Tap a tag</b> to put it on the playing song. It turns <span class="pill only">green</span>. Tap it again to take it off.</li>
+        <li><b>Make a new tag</b> with <b>+ New tag</b> (the dashed button at the end). Type the name and press Done. It's added to the playing song straight away.</li>
+        <li>Skip to the <b>next song</b> with the next button on the dark card, or let it play to the end. Use the previous button to go <b>back</b> and fix the last one.</li>
+      </ol>
+      <p>Each button shows how many songs have that tag. "<i>2 on this song</i>" above the pad tells you how many tags the playing song has.</p>
+      <div class="tip"><b>Ideas for tags:</b> moods (<i>chill</i>, <i>upbeat</i>), activities (<i>workout</i>, <i>focus</i>), places and times (<i>road trip</i>, <i>morning</i>, <i>rainy day</i>), people (<i>family</i>, <i>party</i>), or anything you'd want to filter by, like <i>explicit</i>. A tag can be any word or phrase.</div>
+    </div>
+    <figure><img class="shot" src="img/tag.png" alt="Tag tab"><figcaption>Tag pad: "road trip" and "upbeat" are on</figcaption></figure>
+  </div>
+</section>
+
+<section id="player">
+  <h2>The Player tab</h2>
+  <div class="split two">
+    <div>
+      <p>The <span class="tab">Player</span> tab shows the playing song: its place in the queue ("<i>Now playing · 3 of 12</i>"), a progress bar you can drag to jump around, and play, previous and next.</p>
+      <p>Below that, the <b>Tags</b> card shows only this song's tags:</p>
+      <ul>
+        <li><b>Remove a tag:</b> tap the <b>×</b> on it.</li>
+        <li><b>Add a tag:</b> tap <b>+ Add tag</b>. A list of your other tags slides up. Tap one to add it, or tap <b>New tag…</b> to type a new one.</li>
+      </ul>
+      <p>Use Player when you want to fix one song's tags. Use Tag when you're going through lots of songs.</p>
+    </div>
+    <figure><img class="shot" src="img/player.png" alt="Player tab"><figcaption>The song's tags</figcaption></figure>
+    <figure><img class="shot" src="img/add-sheet.png" alt="Add tag list"><figcaption>+ Add tag</figcaption></figure>
+  </div>
+</section>
+
+<section id="mix">
+  <h2>Making a playlist with Mix</h2>
+  <div class="split">
+    <div>
+      <p>The <span class="tab">Mix</span> tab is a little mixing desk with <b>six faders</b>. Put a tag on a fader, then set the fader to decide what that tag does:</p>
+      <table>
+        <tr><th>Fader</th><th>Means</th></tr>
+        <tr><td><span class="pill only">ONLY</span> (top)</td><td>Every song <b>must</b> have this tag.</td></tr>
+        <tr><td><span class="pill any">ANY</span> (middle)</td><td>Songs need <b>at least one</b> of the tags set to ANY.</td></tr>
+        <tr><td><span class="pill no">NO</span> (bottom)</td><td>Songs with this tag are <b>left out</b>.</td></tr>
+      </table>
+      <p>All the faders work together. Under them, Mix reads your choices back as a sentence, so you can check it says what you mean.</p>
+    </div>
+    <figure><img class="shot" src="img/mix.png" alt="Mix tab"><figcaption>Four faders in use, two free</figcaption></figure>
+  </div>
+
+  <h3>Step by step</h3>
+  <ol class="steps">
+    <li><b>Put tags on faders.</b> Below the results, your unused tags are listed as <b>+ tag</b> buttons. Tap one and it goes onto the next free fader, set to ANY.</li>
+    <li><b>Set each fader.</b> Tap the top, middle or bottom of a fader, or drag its knob. You can also tap a tag in the sentence to cycle it ANY → ONLY → NO.</li>
+    <li><b>Check the matches.</b> The big number shows how many songs match. Tap it to see the list. Tap a song in the list to play the matches starting from that song.</li>
+    <li><b>Play.</b> Tap <span class="pill btn">Play all</span> to play every match in order.</li>
+  </ol>
+
+  <div class="split">
+    <div>
+      <h3 style="margin-top:6px">Example: a family road trip</h3>
+      <p>Faders: <span class="pill only">road trip</span> ONLY, <span class="pill any">upbeat</span> and <span class="pill any">family</span> ANY, <span class="pill no">explicit</span> NO.</p>
+      <p>Mix reads: "<i>Play songs tagged road trip and any of upbeat, family but never explicit.</i>"</p>
+      <p>So you get road-trip songs that are upbeat or family songs, with nothing explicit. In the demo library, that's 3 songs.</p>
+
+      <h3>Freeing faders</h3>
+      <ul>
+        <li><b>One fader:</b> press and hold it. Its tag goes back to the <b>+ tag</b> list.</li>
+        <li><b>All faders:</b> tap <b>Reset</b> at the top.</li>
+        <li>When all six are in use, free one before adding another tag.</li>
+      </ul>
+      <div class="tip"><b>Tip:</b> with no faders set, every song matches, so <b>Play all</b> plays your whole library. If nothing matches, Play all is greyed out: loosen a fader.</div>
+    </div>
+    <figure><img class="shot" src="img/mix-results.png" alt="Mix results"><figcaption>3 songs match</figcaption></figure>
+  </div>
+</section>
+
+<section id="playback">
+  <h2>Playback controls</h2>
+  <ul>
+    <li><b>Music keeps playing</b> when you switch tabs, so you can tag, browse and mix at the same time.</li>
+    <li><b>Mini player</b> (Library and Mix tabs): play/pause, previous, next. The ring around the play button fills up as the song plays.</li>
+    <li><b>Player tab:</b> drag the progress bar to jump to any point in the song.</li>
+    <li><b>Lock screen and headphones:</b> pause, play and skip from your phone's lock screen and media controls.</li>
+    <li><b>Order:</b> songs play in list order. When the last one ends, playback stops.</li>
+  </ul>
+</section>
+
+<section id="tags">
+  <h2>Where your tags are saved</h2>
+  <p>Tags are saved <b>inside each song file</b>, not in the app. That means:</p>
+  <ul>
+    <li>Tags <b>stay with the song</b> when you move it, copy it, back it up or sync it to another device.</li>
+    <li>If you delete and reinstall the app, add your folder again and every tag is still there.</li>
+    <li>Technically, tags go in the file's <b>genre</b> field, separated by semicolons. Other music apps will show your tags as the song's genre.</li>
+    <li>If a song already had a genre, it shows up as a tag. Keep it or remove it like any other tag.</li>
+  </ul>
+  <div class="tip"><b>Avoid semicolons</b> ( ; ) in tag names, since that's the character used to separate tags in the file.</div>
+</section>
+
+<section id="faq" class="qa">
+  <h2>Questions and fixes</h2>
+
+  <h3>My songs disappeared.</h3>
+  <p>The folder was probably moved, renamed or deleted. Add it again with <b>+ Add</b>. Your tags are safe because they're in the files.</p>
+
+  <h3>I added songs to my folder but they're not in the library.</h3>
+  <p>Switch to another app and back, or close and reopen Instant Playlist. It checks your folders when you return.</p>
+
+  <h3>"Couldn't save tags to this file."</h3>
+  <p>The app wasn't allowed to change that file, for example because it's read-only or in a folder the app can't write to. Copy the song into the Instant Playlist folder in Files, or into your synced folder, and add that folder.</p>
+
+  <h3>A song shows a file name instead of a title.</h3>
+  <p>The file has no title saved in it. Any tag editor on your computer can add one.</p>
+
+  <h3>Play all is greyed out.</h3>
+  <p>No songs match your faders. Move a fader from ONLY or NO back to ANY, or tap <b>Reset</b>.</p>
+
+  <h3>Is my data collected?</h3>
+  <p>No. Instant Playlist collects no data, has no account, and never connects to the internet. See the <a href="https://www.devank.dev/instant-playlist/privacy.html">privacy policy</a>.</p>
+
+  <h3>Need help?</h3>
+  <p>Visit <a href="https://www.devank.dev/instant-playlist/">devank.dev/instant-playlist</a> for support and contact details.</p>
+</section>
+
+<footer>Instant Playlist user guide · October 2026</footer>
+</main>
+</body>
+</html>
