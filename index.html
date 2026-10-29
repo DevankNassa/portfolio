@@ -66,7 +66,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center relative overflow-hidden selection:bg-zinc-800 selection:text-white">
+<body class="min-h-screen flex items-center justify-center relative overflow-x-hidden selection:bg-zinc-800 selection:text-white">
 
     <!-- Grid Background overlay -->
     <div class="absolute inset-0 bg-grid z-0 pointer-events-none"></div>
@@ -75,7 +75,7 @@
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-800/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
     <!-- Main Content -->
-    <main class="relative z-10 text-center px-6 max-w-2xl w-full">
+    <main class="relative z-10 text-center px-6 py-16 max-w-2xl w-full">
         
         <!-- Logo / Name -->
         <div class="mb-8 fade-in-up">
@@ -104,6 +104,28 @@
                 <i class="ph ph-arrow-right"></i>
             </a>
         </div>
+
+        <!-- Featured: Salt analysis game -->
+        <section class="mb-12 fade-in-up delay-300" aria-labelledby="game-heading">
+            <a href="chemistry-game/" class="group block text-left border border-zinc-800 rounded-2xl p-6 bg-zinc-950/60 hover:border-zinc-600 hover:bg-zinc-900/40 transition-colors">
+                <div class="flex items-start justify-between gap-4">
+                    <div>
+                        <p class="font-mono text-xs uppercase tracking-[0.18em] text-zinc-500 mb-3">Now playable · Daily puzzle</p>
+                        <h3 id="game-heading" class="text-xl text-white font-medium">The Barely Passing Manual</h3>
+                        <p class="mt-1 text-sm text-zinc-500 italic">Want to test your salt analysis?</p>
+                        <p class="mt-3 text-zinc-400 leading-relaxed">
+                            A Wordle-style chemistry game built on the CBSE Class 12 practical. Each day there's a new unknown salt.
+                            Run the tests in the right order, write down what you observe, and name the anion and cation before you run out of strikes.
+                        </p>
+                    </div>
+                    <i class="ph ph-arrow-up-right text-zinc-600 group-hover:text-white transition-colors text-xl mt-1 shrink-0"></i>
+                </div>
+                <p class="mt-5 inline-flex items-center gap-2 text-sm font-mono text-zinc-400 group-hover:text-white transition-colors">
+                    Play today's salt
+                    <i class="ph ph-arrow-right"></i>
+                </p>
+            </a>
+        </section>
 
         <!-- Social Links -->
         <div class="flex items-center justify-center gap-6 fade-in-up delay-300">
