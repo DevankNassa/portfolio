@@ -3,172 +3,575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>devank.dev | Under Construction</title>
-    
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Load Google Fonts (Inter) -->
+    <title>Devank Nassa</title>
+    <meta name="description" content="Devank Nassa builds whole products: an iPhone music player, a portfolio review tool and a daily chemistry game.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-    
-    <!-- Load Phosphor Icons for elegant social icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --paper: #f1f3f9;
+            --panel: #e2e6f4;
+            --line: #c5cbe4;
+            --ink: #1a2493;
+            --muted: #474f86;
+            --any: #666ea6;
+            --no: #c91f66;
+            --white: #ffffff;
+            --slot: 52px;
+            color-scheme: light;
+        }
+
+        * { box-sizing: border-box; }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #09090b; /* Zinc 950 */
-            color: #f4f4f5; /* Zinc 100 */
-        }
-        
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Subtle tech-inspired grid background */
-        .bg-grid {
-            background-size: 50px 50px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
-            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Familjen Grotesk', system-ui, sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.55;
         }
 
-        /* Blinking cursor animation */
-        .cursor-blink {
-            animation: blink 1s step-end infinite;
+        a { color: inherit; text-underline-offset: 0.18em; }
+        a:hover { color: var(--no); }
+
+        :focus-visible { outline: 3px solid var(--no); outline-offset: 2px; }
+
+        .page { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+        .top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 8px 24px;
+            padding: 24px 0;
+            font-weight: 500;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        .top nav { display: flex; gap: 20px; }
+
+        .hero { padding: 56px 0 88px; }
+
+        h1 {
+            margin: 0;
+            max-width: 12em;
+            font-size: clamp(3.25rem, 11vw, 7.75rem);
+            font-weight: 700;
+            line-height: 0.96;
+            letter-spacing: -0.035em;
         }
 
-        /* Subtle fade-in animation for elements */
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
+        .intro {
+            max-width: 36em;
+            margin: 36px 0 0;
+            font-size: 1.3125rem;
+            line-height: 1.45;
+        }
+
+        .email {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: var(--ink);
+            color: var(--white);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .email:hover { background: var(--no); color: var(--white); }
+
+        .work {
+            display: grid;
+            grid-template-columns: 324px minmax(0, 1fr);
+            gap: 64px;
+            align-items: start;
+            padding-top: 40px;
+            border-top: 2px solid var(--ink);
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 2.25rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .mixer { position: sticky; top: 24px; }
+
+        .mixer > p { margin: 10px 0 0; color: var(--muted); }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            margin: 20px 0 16px;
+            padding: 16px 8px 12px;
+            border-radius: 28px;
+            background: var(--panel);
+        }
+
+        .channel {
+            min-width: 0;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            text-align: center;
+        }
+
+        .sr {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            clip-path: inset(50%);
+            white-space: nowrap;
+        }
+
+        .track {
+            position: relative;
+            width: var(--slot);
+            height: calc(var(--slot) * 3);
+            margin: 0 auto;
+            border-radius: calc(var(--slot) / 2);
+            background: var(--paper);
+        }
+
+        .track label {
+            display: block;
+            height: var(--slot);
+            cursor: pointer;
+        }
+
+        .track input {
+            position: absolute;
             opacity: 0;
-            transform: translateY(20px);
+            width: var(--slot);
+            height: var(--slot);
+            margin: 0;
+            cursor: pointer;
         }
 
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
+        .knob {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            display: grid;
+            place-items: center;
+            width: calc(var(--slot) - 6px);
+            height: calc(var(--slot) - 6px);
+            border-radius: 50%;
+            background: var(--any);
+            color: var(--white);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            pointer-events: none;
+            transform: translateY(var(--slot));
+            transition: transform 160ms ease, background-color 160ms ease;
+        }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .channel[data-state="only"] .knob { background: var(--ink); transform: translateY(0); }
+        .channel[data-state="no"] .knob { background: var(--no); transform: translateY(calc(var(--slot) * 2)); }
+
+        .track:has(input:focus-visible) .knob { outline: 3px solid var(--no); outline-offset: 2px; }
+
+        .name {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .sentence {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.7;
+        }
+
+        .chip {
+            padding: 2px 10px;
+            border-radius: 999px;
+            background: var(--any);
+            color: var(--white);
+            white-space: nowrap;
+        }
+
+        .chip.only { background: var(--ink); }
+        .chip.no { background: var(--no); text-decoration: line-through; }
+
+        .tally {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            font-weight: 500;
+        }
+
+        .reset {
+            padding: 0;
+            border: 0;
+            background: none;
+            color: inherit;
+            font: inherit;
+            text-decoration: underline;
+            text-underline-offset: 0.18em;
+            cursor: pointer;
+        }
+
+        .reset:hover { color: var(--no); }
+        .reset[hidden] { display: none; }
+
+        .projects { margin: 0; padding: 0; list-style: none; }
+
+        .project {
+            padding: 0 0 44px;
+            margin-bottom: 44px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .project:last-child { margin-bottom: 0; padding-bottom: 8px; border-bottom: 0; }
+
+        .project[hidden] { display: none; }
+
+        .project h3 {
+            margin: 0;
+            font-size: 1.75rem;
+            line-height: 1.15;
+            letter-spacing: -0.015em;
+        }
+
+        .status { margin: 4px 0 0; color: var(--muted); font-weight: 500; }
+
+        .project p.about { max-width: 38em; margin: 12px 0 0; }
+
+        .links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 12px 0 0; font-weight: 600; }
+
+        .with-phone {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 190px;
+            gap: 32px;
+            align-items: start;
+        }
+
+        video, .shot {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: var(--panel);
+        }
+
+        figure.shot-wrap { margin: 20px 0 0; }
+
+        figcaption { margin-top: 6px; color: var(--muted); font-size: 0.9375rem; }
+
+        .empty { margin: 0; font-size: 1.25rem; }
+
+        .foot {
+            margin-top: 64px;
+            padding: 28px 0 40px;
+            border-top: 2px solid var(--ink);
+        }
+
+        .foot p { max-width: 38em; margin: 0; }
+        .foot p + p { margin-top: 10px; }
+
+        html:not(.js) .board, html:not(.js) .sentence, html:not(.js) .tally, html:not(.js) .mixer > p { display: none; }
+
+        @media (max-width: 860px) {
+            .hero { padding: 32px 0 56px; }
+            .intro { font-size: 1.1875rem; }
+            .work { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+            .mixer { position: static; }
+        }
+
+        @media (max-width: 560px) {
+            .page { padding: 0 16px; }
+            :root { --slot: 48px; }
+            .with-phone { grid-template-columns: minmax(0, 1fr); }
+            .with-phone video { max-width: 220px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .knob { transition: none; }
         }
     </style>
+    <script>document.documentElement.classList.add("js");</script>
 </head>
-<body class="min-h-screen flex items-center justify-center relative overflow-x-hidden selection:bg-zinc-800 selection:text-white">
+<body>
+    <div class="page">
+        <header class="top">
+            <span>Devank Nassa</span>
+            <nav aria-label="Contact">
+                <a href="mailto:devanknassa@gmail.com">Email</a>
+                <a href="https://github.com/DevankNassa">GitHub</a>
+                <a href="https://www.linkedin.com/in/devank-nassa">LinkedIn</a>
+            </nav>
+        </header>
 
-    <!-- Grid Background overlay -->
-    <div class="absolute inset-0 bg-grid z-0 pointer-events-none"></div>
-
-    <!-- Ambient glow effect -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-800/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
-
-    <!-- Main Content -->
-    <main class="relative z-10 text-center px-6 py-16 max-w-2xl w-full">
-        
-        <!-- Logo / Name -->
-        <div class="mb-8 fade-in-up">
-            <h1 class="text-2xl md:text-3xl font-semibold tracking-tight text-zinc-300">
-                Devank Nassa
-            </h1>
-            <div class="mt-2 text-sm md:text-base font-mono text-zinc-500">
-                <span>devank.dev</span><span class="cursor-blink inline-block ml-1 w-2 h-4 bg-zinc-500 translate-y-1"></span>
-            </div>
-        </div>
-
-        <!-- Divider -->
-        <div class="w-12 h-px bg-zinc-800 mx-auto mb-10 fade-in-up delay-100"></div>
-
-        <!-- Status Message -->
-        <div class="mb-12 fade-in-up delay-200">
-            <h2 class="text-4xl md:text-5xl font-light tracking-tight text-white mb-4">
-                Under Construction
-            </h2>
-            <p class="text-zinc-400 text-lg md:text-xl font-light max-w-md mx-auto leading-relaxed">
-                I'm currently crafting a new experience. <br class="hidden md:block"/>
-                Check back soon to see what's coming.
-            </p>
-            <a href="work.html" class="inline-flex items-center gap-2 mt-8 text-sm font-mono text-zinc-400 border border-zinc-800 rounded-full px-4 py-2 hover:text-white hover:border-zinc-600 transition-colors">
-                Open the public draft
-                <i class="ph ph-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Featured: Salt analysis game -->
-        <section class="mb-12 fade-in-up delay-300" aria-labelledby="game-heading">
-            <a href="chemistry-game/" class="group block text-left border border-zinc-800 rounded-2xl p-6 bg-zinc-950/60 hover:border-zinc-600 hover:bg-zinc-900/40 transition-colors">
-                <div class="flex items-start justify-between gap-4">
-                    <div>
-                        <p class="font-mono text-xs uppercase tracking-[0.18em] text-zinc-500 mb-3">Now playable · Daily puzzle</p>
-                        <h3 id="game-heading" class="text-xl text-white font-medium">The Barely Passing Manual</h3>
-                        <p class="mt-1 text-sm text-zinc-500 italic">Want to test your salt analysis?</p>
-                        <p class="mt-3 text-zinc-400 leading-relaxed">
-                            A Wordle-style chemistry game built on the CBSE Class 12 practical. Each day there's a new unknown salt.
-                            Run the tests in the right order, write down what you observe, and name the anion and cation before you run out of strikes.
-                        </p>
-                    </div>
-                    <i class="ph ph-arrow-up-right text-zinc-600 group-hover:text-white transition-colors text-xl mt-1 shrink-0"></i>
-                </div>
-                <p class="mt-5 inline-flex items-center gap-2 text-sm font-mono text-zinc-400 group-hover:text-white transition-colors">
-                    Play today's salt
-                    <i class="ph ph-arrow-right"></i>
+        <main>
+            <section class="hero">
+                <h1>I'm Devank. I build whole products.</h1>
+                <p class="intro">
+                    I was a frontend developer for four years. Since the start of 2026 I've
+                    built my own projects, including an iPhone app, a portfolio review tool
+                    and a daily chemistry game. I'm looking for product engineering work,
+                    remote or hybrid from Delhi.
                 </p>
-            </a>
-        </section>
+                <a class="email" href="mailto:devanknassa@gmail.com">Email me</a>
+            </section>
 
-        <!-- Featured: Instant Playlist -->
-        <section class="mb-12 fade-in-up delay-300" aria-labelledby="playlist-heading">
-            <a href="instant-playlist/" class="group block text-left border border-zinc-800 rounded-2xl p-6 bg-zinc-950/60 hover:border-zinc-600 hover:bg-zinc-900/40 transition-colors">
-                <div class="flex items-start justify-between gap-4">
-                    <div>
-                        <p class="font-mono text-xs uppercase tracking-[0.18em] text-zinc-500 mb-3">Coming soon · iPhone &amp; Android</p>
-                        <h3 id="playlist-heading" class="text-xl text-white font-medium">Instant Playlist</h3>
-                        <p class="mt-3 text-zinc-400 leading-relaxed">
-                            A music player for the songs you already own. Tag your songs, then build a
-                            playlist from whichever tags you choose.
-                        </p>
+            <section class="work" aria-labelledby="work-heading">
+                <div class="mixer">
+                    <h2 id="work-heading">Mix my work</h2>
+                    <p>These are the faders from Instant Playlist. Set a tag to Only, Any or No.</p>
+                    <div class="board" id="board" role="group" aria-label="Filter projects by tag"></div>
+                    <p class="sentence" id="sentence"></p>
+                    <div class="tally">
+                        <span id="count" aria-live="polite"></span>
+                        <button class="reset" id="reset" type="button" hidden>Reset</button>
                     </div>
-                    <i class="ph ph-arrow-up-right text-zinc-600 group-hover:text-white transition-colors text-xl mt-1 shrink-0"></i>
                 </div>
-                <p class="mt-5 inline-flex items-center gap-2 text-sm font-mono text-zinc-400 group-hover:text-white transition-colors">
-                    See the demo and guide
-                    <i class="ph ph-arrow-right"></i>
-                </p>
-            </a>
-        </section>
 
-        <!-- Social Links -->
-        <div class="flex items-center justify-center gap-6 fade-in-up delay-300">
-            <!-- X (Twitter) -->
-            <!-- <a href="#" class="text-zinc-500 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="X (Twitter)">
-                <i class="ph ph-x-logo text-2xl"></i>
-            </a> -->
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/devank-nassa" class="text-zinc-500 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="LinkedIn">
-                <i class="ph ph-linkedin-logo text-2xl"></i>
-            </a>
-            <!-- GitHub -->
-            <a href="https://github.com/DevankNassa" class="text-zinc-500 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="GitHub">
-                <i class="ph ph-github-logo text-2xl"></i>
-            </a>
-            <!-- Email -->
-            <a href="mailto:devanknassa@gmail.com" class="text-zinc-500 hover:text-white transition-colors duration-300 transform hover:scale-110" aria-label="Email">
-                <i class="ph ph-envelope-simple text-2xl"></i>
-            </a>
-        </div>
-        
-    </main>
+                <div>
+                    <ul class="projects" id="projects">
+                        <li class="project" data-tags="mobile">
+                            <div class="with-phone">
+                                <div>
+                                    <h3>Instant Playlist</h3>
+                                    <p class="status">Submitted to the App Store, October 2026</p>
+                                    <p class="about">
+                                        An iPhone music player for the songs you already own. Tag your
+                                        songs, then set the faders to build a playlist. Tags are saved in
+                                        each song file, so they move with it. Built in Flutter. I made
+                                        the demo video in code with Remotion.
+                                    </p>
+                                    <p class="links">
+                                        <a href="instant-playlist/">Read the guide</a>
+                                        <a href="https://github.com/DevankNassa/music_player">See the code</a>
+                                    </p>
+                                </div>
+                                <video controls playsinline preload="none" width="1080" height="1920"
+                                       poster="instant-playlist/guide/img/video-poster.jpg"
+                                       aria-label="34-second demo of Instant Playlist, with music">
+                                    <source src="instant-playlist/guide/instant-playlist-demo.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </li>
 
+                        <li class="project" data-tags="web backend finance">
+                            <h3>Kosh</h3>
+                            <p class="status">Independent work. Showcase MVP, not in production</p>
+                            <p class="about">
+                                A portfolio review tool for an independent mutual fund distributor. It
+                                shows each client's holdings, what market moves and news do to them, and
+                                the tax effect of a change before it's made. It imports CAS statements
+                                and stores daily AMFI and NSE prices. FastAPI, SQLite and React.
+                            </p>
+                            <p class="links">
+                                <a href="https://github.com/DevankNassa/kosh">See the code</a>
+                            </p>
+                            <figure class="shot-wrap">
+                                <img class="shot" src="img/kosh-morning-review.jpg" width="1360" height="640" loading="lazy"
+                                     alt="Kosh morning review screen with total value, client moves and a list of sample what-if events">
+                                <figcaption>Sample clients and sample events, not real data.</figcaption>
+                            </figure>
+                        </li>
+
+                        <li class="project" data-tags="web try-today">
+                            <div class="with-phone">
+                                <div>
+                                    <h3>The Barely Passing Manual</h3>
+                                    <p class="status">Playable prototype</p>
+                                    <p class="about">
+                                        A daily, Wordle-style puzzle built on the CBSE Class 12 chemistry
+                                        practical. Run the tests in order, record what you see, and name the
+                                        salt before you run out of strikes. React, TypeScript and Vite.
+                                    </p>
+                                    <p class="links">
+                                        <a href="chemistry-game/">Play today's salt</a>
+                                        <a href="https://github.com/DevankNassa/salt-analysis">See the code</a>
+                                    </p>
+                                </div>
+                                <img class="shot" src="img/salt-home.jpg" width="430" height="640" loading="lazy"
+                                     alt="Home screen of The Barely Passing Manual with a button to play the daily salt">
+                            </div>
+                        </li>
+
+                        <li class="project" data-tags="backend finance">
+                            <h3>mf-backend</h3>
+                            <p class="status">Code only</p>
+                            <p class="about">
+                                A mutual fund NAV backend with a worker that processes queued jobs.
+                                Node.js, Fastify, Prisma, Redis and BullMQ.
+                            </p>
+                            <p class="links">
+                                <a href="https://github.com/DevankNassa/mf-backend">See the code</a>
+                            </p>
+                        </li>
+
+                        <li class="project" data-tags="web">
+                            <h3>Websites and ad accounts for friends and family</h3>
+                            <p class="status">Volunteer work</p>
+                            <p class="about">
+                                I built websites, fixed access to Meta ad accounts and set spend limits.
+                                The accounts aren't mine to show, so there's no public link.
+                            </p>
+                        </li>
+
+                        <li class="project" data-tags="backend">
+                            <h3>ChirpyGo</h3>
+                            <p class="status">Course project</p>
+                            <p class="about">A Go server written as practice on the boot.dev course.</p>
+                            <p class="links">
+                                <a href="https://github.com/DevankNassa/ChirpyGo">See the code</a>
+                            </p>
+                        </li>
+                    </ul>
+                    <p class="empty" id="empty" hidden>No project matches this mix. Move a fader back to Any.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="foot">
+            <p>I build with AI coding tools, including Claude Code. The commit history shows where.</p>
+            <p>Want to talk about a product problem? <a href="mailto:devanknassa@gmail.com">Email me</a>.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Same rule as Instant Playlist: every Only tag, at least one Any tag, no No tag.
+        const tags = [
+            { id: "mobile", label: "mobile" },
+            { id: "web", label: "web" },
+            { id: "backend", label: "backend" },
+            { id: "finance", label: "finance" },
+            { id: "try-today", label: "try today" },
+        ];
+        const positions = [
+            { id: "only", label: "Only" },
+            { id: "any", label: "Any" },
+            { id: "no", label: "No" },
+        ];
+
+        const board = document.getElementById("board");
+        const sentence = document.getElementById("sentence");
+        const count = document.getElementById("count");
+        const reset = document.getElementById("reset");
+        const empty = document.getElementById("empty");
+        const projects = document.querySelectorAll(".project");
+        const state = Object.fromEntries(tags.map((tag) => [tag.id, "any"]));
+
+        tags.forEach((tag) => {
+            const channel = document.createElement("fieldset");
+            channel.className = "channel";
+            channel.dataset.tag = tag.id;
+
+            const legend = document.createElement("legend");
+            legend.className = "sr";
+            legend.textContent = tag.label;
+            channel.append(legend);
+
+            const track = document.createElement("div");
+            track.className = "track";
+            positions.forEach((position) => {
+                const label = document.createElement("label");
+                const input = document.createElement("input");
+                const text = document.createElement("span");
+                input.type = "radio";
+                input.name = tag.id;
+                input.value = position.id;
+                input.checked = position.id === "any";
+                input.addEventListener("change", () => {
+                    state[tag.id] = position.id;
+                    render();
+                });
+                text.className = "sr";
+                text.textContent = position.label;
+                label.append(input, text);
+                track.append(label);
+            });
+
+            const knob = document.createElement("span");
+            knob.className = "knob";
+            knob.setAttribute("aria-hidden", "true");
+            track.append(knob);
+            channel.append(track);
+
+            const name = document.createElement("span");
+            name.className = "name";
+            name.setAttribute("aria-hidden", "true");
+            name.textContent = tag.label;
+            channel.append(name);
+            board.append(channel);
+        });
+
+        function tagsAt(position) {
+            return tags.filter((tag) => state[tag.id] === position);
+        }
+
+        function chips(list, kind) {
+            const fragment = document.createDocumentFragment();
+            list.forEach((tag, index) => {
+                if (index > 0) fragment.append(" ");
+                const chip = document.createElement("span");
+                chip.className = `chip ${kind}`;
+                chip.textContent = tag.label;
+                fragment.append(chip);
+            });
+            return fragment;
+        }
+
+        function writeSentence(only, any, no) {
+            sentence.replaceChildren("Showing ");
+            if (only.length) sentence.append("work tagged ", chips(only, "only"), any.length ? " and any of " : "");
+            if (!only.length && any.length) sentence.append("work tagged any of ");
+            if (any.length) sentence.append(chips(any, "any"));
+            if (!only.length && !any.length) sentence.append("all work");
+            if (no.length) sentence.append(" but never ", chips(no, "no"));
+            sentence.append(".");
+        }
+
+        function render() {
+            const only = tagsAt("only");
+            const any = tagsAt("any");
+            const no = tagsAt("no");
+            let matches = 0;
+
+            projects.forEach((project) => {
+                const has = project.dataset.tags.split(" ");
+                const show = only.every((tag) => has.includes(tag.id))
+                    && (!any.length || any.some((tag) => has.includes(tag.id)))
+                    && !no.some((tag) => has.includes(tag.id));
+                project.hidden = !show;
+                if (show) matches += 1;
+            });
+
+            document.querySelectorAll(".channel").forEach((channel) => {
+                const value = state[channel.dataset.tag];
+                channel.dataset.state = value;
+                channel.querySelector(".knob").textContent = positions.find((position) => position.id === value).label;
+            });
+
+            writeSentence(only, any, no);
+            count.textContent = `${matches} ${matches === 1 ? "project matches" : "projects match"}`;
+            empty.hidden = matches > 0;
+            reset.hidden = any.length === tags.length;
+        }
+
+        reset.addEventListener("click", () => {
+            tags.forEach((tag) => { state[tag.id] = "any"; });
+            document.querySelectorAll('#board input[value="any"]').forEach((input) => { input.checked = true; });
+            render();
+        });
+
+        render();
+    </script>
 </body>
 </html>
