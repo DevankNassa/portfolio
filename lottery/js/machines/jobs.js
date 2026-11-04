@@ -22,13 +22,13 @@
     const W = 150;
     const H = 54;
     const NODES = {
-        applied:     { x: 16,  y: 200, label: 'Applications sent', color: '#ffb347' },
-        interview:   { x: 236, y: 104, label: 'Interview',         color: '#4b8bff' },
-        silence:     { x: 236, y: 316, label: 'No interview',      color: '#5a5f70', sub: 'rejected or ghosted' },
-        offer:       { x: 456, y: 50,  label: 'Offer',             color: '#b26bff' },
-        noOffer:     { x: 456, y: 168, label: 'No offer',          color: '#5a5f70' },
-        hired:       { x: 676, y: 22,  label: 'Hired',             color: '#5be49b' },
-        declined:    { x: 676, y: 104, label: 'Offer declined',    color: '#8b90a0' },
+        applied:     { x: 16,  y: 200, label: 'Applications sent', color: '#111111' },
+        interview:   { x: 236, y: 104, label: 'Interview',         color: '#111111' },
+        silence:     { x: 236, y: 316, label: 'No interview',      color: '#bdbdbd', sub: 'rejected or ghosted' },
+        offer:       { x: 456, y: 50,  label: 'Offer',             color: '#111111' },
+        noOffer:     { x: 456, y: 168, label: 'No offer',          color: '#bdbdbd' },
+        hired:       { x: 676, y: 22,  label: 'Hired',             color: '#d7261e' },
+        declined:    { x: 676, y: 104, label: 'Offer declined',    color: '#9a9a9a' },
     };
     const EDGES = [
         ['applied', 'interview'], ['applied', 'silence'],
@@ -216,7 +216,7 @@
                 else if (id === 'offer') sound.reveal(3);
             }
             if (alive) {
-                if (leaf === 'hired') { sound.reveal(4); burst(treeWrap, ['#5be49b', '#fff', '#ffb347'], 70); }
+                if (leaf === 'hired') { sound.reveal(4); burst(treeWrap, ['#d7261e', '#111111', '#bdbdbd'], 70); }
                 else if (leaf === 'silence') sound.tone({ freq: 220, dur: 0.06, type: 'triangle', gain: 0.05 });
                 else sound.thunk();
             }

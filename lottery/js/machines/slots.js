@@ -58,7 +58,7 @@
             const strip = h('div', { class: 'strip' });
             const el = h('div', { class: 'reel' }, strip);
             const visible = [filler(), filler(), filler()];
-            strip.replaceChildren(filler(), ...visible.map(cell));
+            strip.replaceChildren(cell(filler()), ...visible.map(cell));
             return { el, strip, visible };
         });
 

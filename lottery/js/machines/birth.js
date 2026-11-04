@@ -259,7 +259,7 @@
                     compareBar('Life expectancy', c.life, WORLD.life, 90, v => `${v} yrs`),
                     compareBar('GDP per person', c.gdp, WORLD.gdp, 130000, v => fmt.money(v).replace('.00', ''), true)));
             resultBody.replaceChildren(card);
-            if (c.gdp >= RICH_GDP) burst(card, [region.color, '#fff', '#ffd38a'], 50);
+            if (c.gdp >= RICH_GDP) burst(card, [region.color, '#111111', '#d7261e'], 50);
         }
 
         primaryAction = beBorn;
@@ -310,15 +310,9 @@
             projection.rotate(rot);
             ctx.clearRect(0, 0, w, w);
 
-            const glow = ctx.createRadialGradient(w / 2, w / 2, w * 0.44, w / 2, w / 2, w * 0.5);
-            glow.addColorStop(0, 'rgba(90,140,255,0.28)');
-            glow.addColorStop(1, 'rgba(90,140,255,0)');
-            ctx.fillStyle = glow;
-            ctx.fillRect(0, 0, w, w);
-
             const ocean = ctx.createRadialGradient(w * 0.38, w * 0.35, w * 0.05, w / 2, w / 2, w * 0.48);
-            ocean.addColorStop(0, '#18264a');
-            ocean.addColorStop(1, '#060a14');
+            ocean.addColorStop(0, '#ffffff');
+            ocean.addColorStop(1, '#e4e4e0');
             ctx.beginPath();
             path(SPHERE);
             ctx.fillStyle = ocean;
@@ -326,7 +320,7 @@
 
             ctx.beginPath();
             path(graticule);
-            ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+            ctx.strokeStyle = 'rgba(17,17,17,0.07)';
             ctx.lineWidth = 0.6;
             ctx.stroke();
 
@@ -338,7 +332,7 @@
             }
             ctx.beginPath();
             path(borders);
-            ctx.strokeStyle = 'rgba(6,10,20,0.8)';
+            ctx.strokeStyle = 'rgba(255,255,255,0.9)';
             ctx.lineWidth = 0.5;
             ctx.stroke();
 
@@ -349,7 +343,7 @@
                 ctx.fillStyle = litColor;
                 ctx.fill();
                 ctx.globalAlpha = 1;
-                ctx.strokeStyle = '#fff';
+                ctx.strokeStyle = '#111111';
                 ctx.lineWidth = 1.2;
                 ctx.stroke();
             }
@@ -359,25 +353,25 @@
                 const phase = (now / 900) % 1;
                 ctx.beginPath();
                 ctx.arc(x, y, 4 + phase * 22, 0, Math.PI * 2);
-                ctx.strokeStyle = `rgba(255,255,255,${1 - phase})`;
+                ctx.strokeStyle = `rgba(215,38,30,${1 - phase})`;
                 ctx.lineWidth = 2;
                 ctx.stroke();
                 ctx.beginPath();
                 ctx.arc(x, y, 4, 0, Math.PI * 2);
-                ctx.fillStyle = '#fff';
+                ctx.fillStyle = '#d7261e';
                 ctx.fill();
             }
 
             // soft lighting so it reads as a sphere, not a disc
             const shade = ctx.createRadialGradient(w * 0.35, w * 0.3, w * 0.08, w / 2, w / 2, w * 0.5);
-            shade.addColorStop(0, 'rgba(255,255,255,0.07)');
-            shade.addColorStop(0.65, 'rgba(0,0,0,0)');
-            shade.addColorStop(1, 'rgba(0,0,0,0.5)');
+            shade.addColorStop(0, 'rgba(255,255,255,0)');
+            shade.addColorStop(0.7, 'rgba(0,0,0,0)');
+            shade.addColorStop(1, 'rgba(0,0,0,0.12)');
             ctx.beginPath();
             path(SPHERE);
             ctx.fillStyle = shade;
             ctx.fill();
-            ctx.strokeStyle = 'rgba(160,190,255,0.35)';
+            ctx.strokeStyle = '#111111';
             ctx.lineWidth = 1;
             ctx.stroke();
         }

@@ -103,17 +103,17 @@
             ctx.clearRect(0, 0, W, W);
             const cx = W / 2;
             const g = ctx.createRadialGradient(cx * 0.8, cx * 0.7, 10, cx, cx, R());
-            g.addColorStop(0, 'rgba(255,255,255,0.10)');
-            g.addColorStop(1, 'rgba(255,255,255,0.02)');
+            g.addColorStop(0, 'rgba(255,255,255,0.9)');
+            g.addColorStop(1, 'rgba(255,255,255,0.6)');
             ctx.fillStyle = g;
             ctx.beginPath();
             ctx.arc(cx, cx, R(), 0, Math.PI * 2);
             ctx.fill();
-            ctx.lineWidth = 3;
-            ctx.strokeStyle = 'rgba(200,215,255,0.35)';
+            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = '#111111';
             ctx.stroke();
             const r = br();
-            ctx.font = `700 ${Math.round(r * 0.95)}px "JetBrains Mono", monospace`;
+            ctx.font = `700 ${Math.round(r * 0.95)}px "IBM Plex Mono", monospace`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             for (const b of state.balls) {
@@ -124,11 +124,14 @@
                 ctx.beginPath();
                 ctx.arc(b.x, b.y, r, 0, Math.PI * 2);
                 ctx.fill();
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = 'rgba(17,17,17,0.55)';
+                ctx.stroke();
                 ctx.fillStyle = textColor;
                 ctx.fillText(b.n, b.x, b.y + 0.5);
             }
             // glass highlight
-            ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+            ctx.strokeStyle = 'rgba(17,17,17,0.08)';
             ctx.lineWidth = 4;
             ctx.beginPath();
             ctx.arc(cx, cx, R() - 8, Math.PI * 1.1, Math.PI * 1.45);
@@ -183,8 +186,8 @@
                 sim),
             h('aside', { class: 'split-side' }, oddsPanel())));
 
-        const whiteDrum = makeDrum(whiteCanvas, WHITE, '#e8ecf5', '#1a1d26');
-        const redDrum = makeDrum(redCanvas, RED, '#e0362b', '#fff');
+        const whiteDrum = makeDrum(whiteCanvas, WHITE, '#ffffff', '#111111');
+        const redDrum = makeDrum(redCanvas, RED, '#d7261e', '#ffffff');
         const onResize = () => { whiteDrum.resize(); redDrum.resize(); };
         window.addEventListener('resize', onResize);
         mount.cleanup = () => window.removeEventListener('resize', onResize);
