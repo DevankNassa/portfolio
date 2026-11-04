@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Lottery: odds you were never going to beat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/core.js" defer></script>
+    <script src="js/machines/case.js" defer></script>
+    <script src="js/machines/slots.js" defer></script>
+    <script src="vendor/d3-array.min.js" defer></script>
+    <script src="vendor/d3-geo.min.js" defer></script>
+    <script src="vendor/topojson-client.min.js" defer></script>
+    <script src="vendor/countries-110m.js" defer></script>
+    <script src="js/machines/birth.js" defer></script>
+    <script src="js/machines/powerball.js" defer></script>
+    <script src="js/machines/gacha.js" defer></script>
+    <script src="js/machines/packs.js" defer></script>
+    <script src="js/machines/silicon.js" defer></script>
+    <script src="js/machines/jobs.js" defer></script>
+</head>
+<body>
+    <div class="app">
+        <header class="topbar">
+            <div class="brand">
+                <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+                    <rect x="8" y="8" width="24" height="24" rx="4" fill="#ffb347"/>
+                    <rect x="13" y="13" width="14" height="14" rx="2" fill="#1a1205"/>
+                    <path d="M12 4v4M20 4v4M28 4v4M12 32v4M20 32v4M28 32v4M4 12h4M4 20h4M4 28h4M32 12h4M32 20h4M32 28h4" stroke="#ffb347" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                <div class="brand-text">
+                    <strong>THE LOTTERY</strong>
+                    <small>every chip is a gamble</small>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat"><span>Attempts</span><b id="stat-tries">0</b></div>
+                <div class="stat"><span>Spent</span><b id="stat-spent">$0.00</b></div>
+                <div class="stat"><span>Won back</span><b id="stat-won">$0.00</b></div>
+                <div class="stat"><span>Net</span><b id="stat-net">$0.00</b></div>
+                <button class="icon-btn" id="mute-btn" type="button">Sound on</button>
+                <button class="icon-btn" id="reset-btn" type="button">Reset</button>
+            </div>
+        </header>
+
+        <nav class="machines" id="machine-nav" aria-label="Machines">
+            <div class="nav-title">Machines</div>
+        </nav>
+
+        <main class="stage" id="stage"></main>
+    </div>
+</body>
+</html>
