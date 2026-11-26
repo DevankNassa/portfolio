@@ -12,7 +12,7 @@ Skills shown in the projects below: React, TypeScript, JavaScript, HTML/CSS, Flu
 
 - [Instant Playlist](https://www.devank.dev/instant-playlist/): iPhone music player for songs you already own. Tag songs, then set Only / Any / No faders to build a playlist; tags are saved in each song file. Flutter. Submitted to the App Store, October 2026. Code: https://github.com/DevankNassa/music_player
 - [Kosh](https://github.com/DevankNassa/kosh): portfolio review tool for an independent mutual fund distributor. Client holdings, effect of market moves and news, tax effect of a change before it's made. Imports CAS statements, stores daily AMFI and NSE prices. FastAPI, SQLite, React. Showcase MVP, not in production.
-- [The Barely Passing Manual](https://www.devank.dev/chemistry-game/): daily Wordle-style puzzle built on the CBSE Class 12 chemistry practical. React, TypeScript, Vite. Playable prototype. Code: https://github.com/DevankNassa/salt-analysis
+- [Chemistry Game](https://www.devank.dev/chemistry-game/): daily Wordle-style puzzle built on the CBSE Class 12 chemistry practical. React, TypeScript, Vite. Playable prototype. Code: https://github.com/DevankNassa/salt-analysis
 - [The Lottery](https://www.devank.dev/lottery/): eight machines that show real odds (loot boxes, slots, Powerball, booster packs, CPU binning, a job hunt). Plain HTML, CSS and JavaScript, d3 for the globe.
 - [mf-backend](https://github.com/DevankNassa/mf-backend): mutual fund NAV backend with a queued-job worker. Node.js, Fastify, Prisma, Redis, BullMQ.
 - [ChirpyGo](https://github.com/DevankNassa/ChirpyGo): Go server, boot.dev course project.
