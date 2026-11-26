@@ -1,0 +1,5 @@
+# Search engines and AI agents are welcome.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.devank.dev/sitemap.xml
