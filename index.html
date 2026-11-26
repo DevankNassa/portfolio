@@ -258,6 +258,10 @@
             align-items: start;
         }
 
+        /* Pin both cells so anything a browser extension injects can't reflow them. */
+        .with-phone > div { grid-column: 1; grid-row: 1; }
+        .with-phone > video { grid-column: 2; grid-row: 1; }
+
         video, .shot {
             display: block;
             width: 100%;
@@ -295,7 +299,7 @@
             .page { padding: 0 16px; }
             :root { --slot: 48px; }
             .with-phone { grid-template-columns: minmax(0, 1fr); }
-            .with-phone video { max-width: 220px; }
+            .with-phone > video { grid-column: 1; grid-row: 2; max-width: 220px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
